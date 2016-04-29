@@ -12,7 +12,7 @@ class App extends ReactComponent
 		trace('new App()');
 	}
 	
-	override public function render()
+	override function render()
 	{
 		return jsx('
 			<Layout>

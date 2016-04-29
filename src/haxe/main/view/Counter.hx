@@ -15,7 +15,7 @@ class Counter extends ReactComponent
 		state = { counter: 0 };
 	}
 	
-	override public function componentDidMount()
+	override function componentDidMount()
 	{
 		trace('mount counter');
 		interval = new Timer(1000);
@@ -40,15 +40,17 @@ class Counter extends ReactComponent
 			padding:'10px'
 		};
 		return jsx('
-			<h2 style=$styles onClick=$click>
+			<h2 style=$styles>
 				Counter: ${state.counter}
 				<hr/>
-				<Button>That button!</Button>
+				<Button onClick=$click>That button!</Button>
 			</h2>
 		');
 	}
 	
-	function click() {
+	function click() 
+	{
 		trace('clicked');
+		setState({ counter: state.counter + 100 });
 	}
 }

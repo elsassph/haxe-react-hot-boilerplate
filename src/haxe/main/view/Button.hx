@@ -6,10 +6,12 @@ import api.react.ReactMacro.jsx;
 class Button extends ReactComponent
 {
 
-	override public function render():ReactComponent 
+	override function render()
 	{
 		return jsx('
-			<button>{props.children}</button>
+			<button {...props}>
+				{props.children}
+			</button>
 		');
 	}
 	
