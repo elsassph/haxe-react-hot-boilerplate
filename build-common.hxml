@@ -1,0 +1,9 @@
+-debug
+-D source-map-content
+-D react-hot
+-dce full
+--macro Modular.stub()
+
+-lib react
+-cp src/haxe/lib
+-cp src/haxe/main

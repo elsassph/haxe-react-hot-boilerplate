@@ -1,0 +1,13 @@
+# index
+
+build-common.hxml
+
+--macro exclude('view')
+-js src/js/main.js
+-main Main
+
+-cmd touch src/js/main.js
+
+--next
+
+build-view.hxml

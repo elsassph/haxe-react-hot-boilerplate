@@ -1,0 +1,6 @@
+build-common.hxml
+
+-js src/js/view.js
+view.App
+
+-cmd touch src/js/view.js
