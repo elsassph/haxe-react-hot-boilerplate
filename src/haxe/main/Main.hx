@@ -8,17 +8,19 @@ class Main
 {
 	static function main() 
 	{
-		trace('main()');
-		
+		trace('main()!');
+
+		render();
+		Webpack.hotReload('./view', render);
+	}
+	
+	static function render()
+	{
 		Webpack.ensure(['./view'], function() {
-			
 			ReactDOM.render(
-				jsx('<AppContainer component=$App />'), 
+				jsx('<AppContainer><App/></AppContainer>'), 
 				Browser.document.getElementById('root'));
-			
 		});
-		
-		Webpack.hotReload();
 	}
 }
 

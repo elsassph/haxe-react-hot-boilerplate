@@ -30,7 +30,7 @@
   "homepage": "https://github.com/elsassph/haxe-react-hot-boilerplate",
   "devDependencies": {
     "haxe-watchify": "^1.3.0",
-    "react-hot-loader": "^3.0.0-alpha.9",
+    "react-hot-loader": "^3.0.0-beta.0",
     "webpack": "^1.12.2",
     "webpack-dev-server": "^1.12.1"
   },
