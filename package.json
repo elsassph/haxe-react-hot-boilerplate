@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Boilerplate for ReactJS project with hot code reloading",
   "scripts": {
-    "haxify": "haxe-watchify --program haxe --src src/haxe/main/view --hxml build-view.hxml",
+    "haxify": "haxe-watchify --program haxe --src src/haxe/main/view --hxml build-view.hxml --compiler server",
     "start": "node server.js"
   },
   "repository": {
@@ -30,7 +30,7 @@
   "homepage": "https://github.com/elsassph/haxe-react-hot-boilerplate",
   "devDependencies": {
     "haxe-watchify": "^1.3.0",
-    "react-hot-loader": "^3.0.0-beta.0",
+    "react-hot-loader": "^3.0.0-beta.1",
     "webpack": "^1.12.2",
     "webpack-dev-server": "^1.12.1"
   },
