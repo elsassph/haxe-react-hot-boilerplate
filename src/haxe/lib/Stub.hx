@@ -1,14 +1,23 @@
+package;
+
 #if macro
 import haxe.io.Path;
 import haxe.macro.Compiler;
 import haxe.macro.Context;
-import haxe.macro.Type;
 import sys.FileSystem;
 import sys.io.File;
 
-class Modular
+class Stub
 {
-	static public function stub() 
+	#if (haxe_ver < 3.3)
+	static inline var SCOPE = 'typeof window != "undefined" ? window : exports';
+	static inline var RE_EXPORT = '\\$$hx_exports\\.([a-z0-9_]+) = \\$';
+	#else
+	static inline var SCOPE = 'typeof exports != "undefined" ? exports : typeof window != "undefined" ? window : typeof self != "undefined" ? self : this';
+	static inline var RE_EXPORT = '\\$$hx_exports\\["([a-z0-9_]+)"] = \\$';
+	#end
+	
+	static public function modules() 
 	{
 		Context.onAfterGenerate(generated);
 	}
@@ -24,7 +33,7 @@ class Modular
 		
 		// find exposed modules packages and store their position
 		// eg. 'com' for 'com.common': $hx_exports.com = $hx_exports.com || {};
-		var reExport = ~/\$hx_exports\.([a-z0-9_]+) = \$/gi;
+		var reExport = new EReg(RE_EXPORT, 'gi');
 		var search = src;
 		var refs = new Array<String>();
 		var indexes = new Array<Int>();
@@ -68,8 +77,7 @@ class Modular
 	 */
 	static function addJoinPoint(src:String) 
 	{
-		return StringTools.replace(src,
-			'typeof window != "undefined" ? window : exports', 
+		return StringTools.replace(src, SCOPE, 
 			'typeof $$hx_scope != "undefined" ? $$hx_scope : $$hx_scope = {}');
 	}
 	

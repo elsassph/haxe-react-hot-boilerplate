@@ -2,7 +2,7 @@
 -D source-map-content
 -D react-hot
 -dce full
---macro Modular.stub()
+--macro Stub.modules()
 
 -lib react
 -cp src/haxe/lib
