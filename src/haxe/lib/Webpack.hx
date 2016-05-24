@@ -32,7 +32,7 @@ class Webpack
 		var args = [];
 		if (!isNull(dep)) args.push(dep);
 		if (!isNull(fn)) args.push(fn);
-		return macro untyped module.hot.accept($a{args});
+		return macro if (untyped module.hot) untyped module.hot.accept($a{args});
 	}
 	
 	#if macro
